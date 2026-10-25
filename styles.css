@@ -1,0 +1,1164 @@
+/* =========================================================
+   styles.css - Cyberpunk / Developer Terminal Portfolio Theme
+   Inspired by https://oakabc.github.io/
+   Full Stack Web Development - Responsive Profile & Portfolio
+   Author: Tanarat Phetaum (Win) - ID: 6840010210
+   ========================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Prompt:wght@400;500;600;700&family=Sarabun:wght@400;500;600;700&display=swap');
+
+:root {
+  /* Default: Dark Cyberpunk / Developer Terminal Theme (like oakabc.github.io) */
+  --bg-primary: #030712;
+  --bg-mesh-1: rgba(0, 229, 255, 0.08);
+  --bg-mesh-2: rgba(168, 85, 247, 0.08);
+  --bg-mesh-3: rgba(34, 197, 94, 0.05);
+  --bg-card: rgba(15, 23, 42, 0.72);
+  --bg-card-solid: #0b1120;
+  --bg-subcard: rgba(15, 23, 42, 0.88);
+  --bg-terminal-bar: rgba(2, 6, 23, 0.92);
+  --text-main: #f8fafc;
+  --text-muted: #94a3b8;
+  --primary: #00e5ff;
+  --primary-hover: #22d3ee;
+  --primary-soft: rgba(0, 229, 255, 0.1);
+  --primary-border: rgba(0, 229, 255, 0.32);
+  --accent: #a855f7;
+  --accent-crimson: #f43f5e;
+  --status-green: #22c55e;
+  --border-color: #1e293b;
+  --hr-color: rgba(0, 229, 255, 0.35);
+  --shadow-sm: 0 4px 16px rgba(0, 0, 0, 0.45);
+  --shadow-md: 0 20px 48px -8px rgba(0, 0, 0, 0.65), 0 0 28px rgba(0, 229, 255, 0.05);
+  --shadow-hover: 0 20px 44px -8px rgba(0, 229, 255, 0.2), 0 0 22px rgba(168, 85, 247, 0.14);
+  --radius: 20px;
+  --radius-sm: 12px;
+  --table-head-bg: linear-gradient(135deg, #020617 0%, #0f172a 100%);
+  --table-row-hover: rgba(30, 41, 59, 0.75);
+  --grid-line: rgba(30, 41, 59, 0.45);
+  --font-mono: 'JetBrains Mono', monospace;
+}
+
+/* Alternate Mode when toggled (High-Contrast Clean Cyber Slate) */
+body.dark-mode {
+  --bg-primary: #090d16;
+  --bg-mesh-1: rgba(34, 211, 238, 0.14);
+  --bg-mesh-2: rgba(168, 85, 247, 0.14);
+  --bg-mesh-3: rgba(16, 185, 129, 0.08);
+  --bg-card: rgba(17, 24, 39, 0.85);
+  --bg-card-solid: #111827;
+  --bg-subcard: #1e293b;
+  --bg-terminal-bar: #030712;
+  --text-main: #ffffff;
+  --text-muted: #cbd5e1;
+  --primary: #38bdf8;
+  --primary-hover: #7dd3fc;
+  --primary-soft: rgba(56, 189, 248, 0.15);
+  --primary-border: rgba(56, 189, 248, 0.4);
+  --accent: #c084fc;
+  --border-color: rgba(148, 163, 184, 0.25);
+  --hr-color: rgba(56, 189, 248, 0.45);
+  --shadow-sm: 0 4px 16px rgba(0, 0, 0, 0.5);
+  --shadow-md: 0 18px 42px rgba(0, 0, 0, 0.6);
+  --shadow-hover: 0 22px 48px rgba(56, 189, 248, 0.28);
+  --table-row-hover: rgba(51, 65, 85, 0.65);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 90px;
+}
+
+body {
+  font-family: 'Inter', 'Prompt', 'Sarabun', sans-serif;
+  background-color: var(--bg-primary);
+  background-image:
+    radial-gradient(at 12% 10%, var(--bg-mesh-1) 0px, transparent 48%),
+    radial-gradient(at 88% 18%, var(--bg-mesh-2) 0px, transparent 48%),
+    radial-gradient(at 50% 88%, var(--bg-mesh-3) 0px, transparent 55%),
+    linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
+  background-size: 100% 100%, 100% 100%, 100% 100%, 44px 44px, 44px 44px;
+  background-attachment: fixed;
+  color: var(--text-main);
+  line-height: 1.7;
+  margin: 0;
+  padding: 0;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Interactive Constellation Particle Canvas (from oakabc.github.io) */
+#particle-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.65;
+}
+
+/* Custom Cyber Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #030712;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1e293b;
+  border-radius: 4px;
+  border: 1px solid rgba(0, 229, 255, 0.25);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 229, 255, 0.45);
+}
+
+/* =========================================================
+   ข้อ 9 & 10: Responsive Toggle Navbar + Anchor Links
+   ========================================================= */
+.site-navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: rgba(3, 7, 18, 0.84);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.nav-container {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 12px 22px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.nav-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: #ffffff !important;
+  font-family: var(--font-mono), 'Prompt', monospace;
+  font-weight: 700;
+  font-size: 1rem;
+  text-decoration: none !important;
+  letter-spacing: -0.02em;
+  position: relative;
+}
+
+.nav-brand::before {
+  content: "";
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background-color: var(--status-green);
+  box-shadow: 0 0 10px var(--status-green);
+  display: inline-block;
+  animation: pulseDot 2s infinite ease-in-out;
+}
+
+.nav-brand span::after {
+  content: ".github.io";
+  color: #64748b;
+  font-weight: 400;
+  font-size: 0.86rem;
+  margin-left: 2px;
+}
+
+@keyframes pulseDot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.45; transform: scale(0.88); }
+}
+
+.nav-brand-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center 22%;
+  border: 2px solid var(--primary);
+  box-shadow: 0 0 14px rgba(0, 229, 255, 0.45);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.nav-brand:hover .nav-brand-avatar {
+  transform: scale(1.08) rotate(-3deg);
+  box-shadow: 0 0 20px rgba(0, 229, 255, 0.75);
+}
+
+.nav-controls-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.theme-toggle-btn {
+  background: rgba(15, 23, 42, 0.9);
+  border: 1px solid var(--primary-border);
+  color: var(--primary);
+  border-radius: 8px;
+  padding: 6px 12px;
+  font-family: var(--font-mono), 'Prompt', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s ease;
+}
+
+.theme-toggle-btn:hover {
+  background: var(--primary-soft);
+  box-shadow: 0 0 14px rgba(0, 229, 255, 0.3);
+  transform: translateY(-1px);
+}
+
+/* Hamburger Toggle Button (ซ่อนบนจอใหญ่ แสดงบนจอเล็ก) */
+.nav-toggler {
+  display: none;
+  background: rgba(15, 23, 42, 0.9);
+  border: 1px solid var(--primary-border);
+  border-radius: 8px;
+  padding: 9px 11px;
+  cursor: pointer;
+  color: var(--primary);
+  transition: all 0.2s ease;
+}
+
+.nav-toggler:hover {
+  background: var(--primary-soft);
+  box-shadow: 0 0 12px rgba(0, 229, 255, 0.25);
+}
+
+.hamburger-lines {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  width: 22px;
+}
+
+.hamburger-lines span {
+  display: block;
+  height: 2px;
+  width: 100%;
+  background-color: var(--primary);
+  border-radius: 2px;
+  transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
+.nav-toggler[aria-expanded="true"] .hamburger-lines span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.nav-toggler[aria-expanded="true"] .hamburger-lines span:nth-child(2) {
+  opacity: 0;
+}
+
+.nav-toggler[aria-expanded="true"] .hamburger-lines span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+.nav-menu {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-link-item {
+  color: #94a3b8 !important;
+  font-family: var(--font-mono), 'Prompt', sans-serif;
+  font-size: 0.83rem;
+  font-weight: 500;
+  padding: 7px 11px;
+  border-radius: 8px;
+  text-decoration: none !important;
+  transition: all 0.2s ease;
+  display: inline-block;
+  white-space: nowrap;
+  border: 1px solid transparent;
+}
+
+.nav-link-item::before {
+  content: "#";
+  color: var(--primary);
+  opacity: 0.65;
+  margin-right: 3px;
+  font-weight: 700;
+}
+
+.nav-link-item:hover {
+  color: var(--primary) !important;
+  background-color: rgba(0, 229, 255, 0.06);
+  border-color: rgba(0, 229, 255, 0.2);
+}
+
+.nav-link-item.active {
+  color: #030712 !important;
+  background: var(--primary);
+  font-weight: 700;
+  box-shadow: 0 0 16px rgba(0, 229, 255, 0.45);
+}
+
+.nav-link-item.active::before {
+  color: #030712;
+  opacity: 0.9;
+}
+
+/* =========================================================
+   Container & Terminal Cards (oakabc.github.io aesthetic)
+   ========================================================= */
+.main-container {
+  max-width: 1140px;
+  margin: 34px auto;
+  padding: 0 20px;
+  position: relative;
+  z-index: 1;
+}
+
+.card-section {
+  background: var(--bg-card);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--border-color);
+  padding: 58px 36px 36px 36px;
+  margin-bottom: 28px;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.card-section:hover {
+  border-color: rgba(0, 229, 255, 0.28);
+}
+
+/* macOS / Linux Terminal Top Bar inside every Section Card */
+.card-section::before {
+  content: "●  ●  ●    ~/pim/cai-engineering/tanarat-portfolio — zsh";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 36px;
+  background: var(--bg-terminal-bar);
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  padding: 0 18px;
+  font-family: var(--font-mono), monospace;
+  font-size: 0.75rem;
+  color: #64748b;
+  letter-spacing: 0.03em;
+}
+
+#profile.card-section::before {
+  content: "●  ●  ●    ~/pim/engineering $ whoami — profile.json";
+  color: var(--primary);
+}
+
+#about.card-section::before {
+  content: "●  ●  ●    // 01_ABOUT_ME.md — cat about.txt";
+}
+
+#education.card-section::before {
+  content: "●  ●  ●    // 02_EDUCATION.log — git log --graph";
+}
+
+#skills.card-section::before {
+  content: "●  ●  ●    // 03_SKILLS_MATRIX.json — npm list --depth=0";
+}
+
+#experience.card-section::before {
+  content: "●  ●  ●    // 04_EXPERIENCE_AND_PROJECTS.sh — ./run_projects.sh";
+}
+
+#favorites.card-section::before {
+  content: "●  ●  ●    // 05_LIFESTYLE_AND_INTERESTS.raw — open ~/hobbies";
+}
+
+#contact.card-section::before {
+  content: "●  ●  ●    // 06_CONTACT_CHANNELS.sh — ./connect --with \"Win\"";
+}
+
+/* Neon top accent glow line */
+.card-section::after {
+  content: "";
+  position: absolute;
+  top: 36px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--primary), var(--accent), transparent);
+  opacity: 0.7;
+}
+
+/* ข้อ 7: เส้นแบ่งย่อหน้า (hr) */
+hr.section-divider {
+  border: none;
+  border-top: 2px dashed var(--hr-color);
+  width: 140px;
+  margin: 34px auto;
+  opacity: 0.75;
+  position: relative;
+}
+
+hr.paragraph-divider {
+  border: none;
+  border-top: 1px dashed var(--border-color);
+  margin: 22px 0;
+  opacity: 0.85;
+}
+
+/* =========================================================
+   ข้อ 1 - 6: ส่วนหัวโปรไฟล์ (Circular Image, h1, em, Faculty, PIM Link, Short Bio)
+   ========================================================= */
+.hero-profile {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+.avatar-wrapper {
+  position: relative;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.avatar-ring {
+  padding: 5px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 60%, #22c55e 100%);
+  box-shadow: 0 0 32px rgba(0, 229, 255, 0.35), 0 0 60px rgba(168, 85, 247, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.avatar-ring:hover {
+  transform: translateY(-4px) scale(1.03);
+  box-shadow: 0 0 42px rgba(0, 229, 255, 0.55), 0 0 70px rgba(168, 85, 247, 0.35);
+}
+
+/* ข้อ 1: การใช้รูป Display แบบวงกลม */
+.profile-img-circle {
+  width: 190px;
+  height: 190px;
+  min-width: 190px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center 22%;
+  border: 4px solid var(--bg-card-solid);
+  display: block;
+}
+
+.status-pill {
+  margin-top: -14px;
+  background: #020617;
+  border: 1px solid var(--primary-border);
+  box-shadow: 0 0 16px rgba(0, 229, 255, 0.2);
+  padding: 5px 14px;
+  border-radius: 999px;
+  font-family: var(--font-mono), monospace;
+  font-size: 0.76rem;
+  font-weight: 600;
+  color: var(--primary);
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  z-index: 2;
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  background-color: var(--status-green);
+  border-radius: 50%;
+  box-shadow: 0 0 8px var(--status-green);
+  animation: pulseDot 2s infinite ease-in-out;
+}
+
+.hero-info {
+  flex: 1;
+}
+
+.badge-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.badge-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background-color: var(--primary-soft);
+  color: var(--primary);
+  border: 1px solid var(--primary-border);
+  font-family: var(--font-mono), 'Prompt', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 5px 13px;
+  border-radius: 999px;
+  box-shadow: 0 0 12px rgba(0, 229, 255, 0.12);
+}
+
+.badge-tag-crimson {
+  background-color: rgba(168, 85, 247, 0.14);
+  color: #d8b4fe;
+  border-color: rgba(168, 85, 247, 0.4);
+  box-shadow: 0 0 12px rgba(168, 85, 247, 0.15);
+}
+
+/* ข้อ 2: ชื่อ-นามสกุลแบบ h1 */
+h1.student-name {
+  font-family: 'Prompt', 'Inter', sans-serif;
+  font-size: 2.25rem;
+  font-weight: 700;
+  background: linear-gradient(90deg, #ffffff 0%, #e0f2fe 45%, var(--primary) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin: 0 0 12px 0;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+  text-shadow: 0 0 28px rgba(0, 229, 255, 0.22);
+}
+
+.affiliation-list {
+  margin: 0 0 16px 0;
+  color: var(--text-muted);
+  font-size: 0.97rem;
+  line-height: 1.85;
+}
+
+.affiliation-list strong {
+  color: #e2e8f0;
+  font-family: var(--font-mono), 'Prompt', sans-serif;
+}
+
+.affiliation-list em {
+  color: var(--primary);
+  font-style: italic;
+  font-weight: 600;
+  text-shadow: 0 0 12px rgba(0, 229, 255, 0.25);
+}
+
+.pim-link {
+  color: var(--primary);
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color 0.2s ease, text-shadow 0.2s ease;
+}
+
+.pim-link:hover {
+  color: #ffffff;
+  text-shadow: 0 0 12px var(--primary);
+}
+
+.short-bio-box {
+  background: rgba(2, 6, 23, 0.78);
+  border: 1px solid var(--border-color);
+  border-left: 4px solid var(--primary);
+  padding: 16px 20px;
+  border-radius: 0 12px 12px 0;
+  margin: 14px 0 20px 0;
+  color: var(--text-main);
+  font-size: 0.94rem;
+  box-shadow: inset 0 0 20px rgba(0, 229, 255, 0.04);
+  position: relative;
+}
+
+.short-bio-box strong {
+  color: var(--primary);
+  font-family: var(--font-mono), 'Prompt', sans-serif;
+}
+
+.quick-stats-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin: 18px 0 20px 0;
+}
+
+.stat-mini-card {
+  background: rgba(2, 6, 23, 0.75);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 12px 14px;
+  text-align: center;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.stat-mini-card:hover {
+  border-color: var(--primary-border);
+  transform: translateY(-2px);
+}
+
+.stat-mini-value {
+  font-family: var(--font-mono), 'Prompt', sans-serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--primary);
+  text-shadow: 0 0 14px rgba(0, 229, 255, 0.35);
+  display: block;
+}
+
+.stat-mini-label {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+.section-header-row {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 20px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(30, 41, 59, 0.8);
+}
+
+.section-title {
+  font-family: 'Prompt', 'Inter', sans-serif;
+  font-size: 1.48rem;
+  font-weight: 700;
+  color: var(--text-main);
+  margin: 0 0 6px 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.section-title::before {
+  content: "//";
+  font-family: var(--font-mono), monospace;
+  color: var(--primary);
+  font-size: 1.2rem;
+  font-weight: 700;
+  text-shadow: 0 0 10px rgba(0, 229, 255, 0.4);
+}
+
+.section-subtitle {
+  color: var(--text-muted);
+  font-size: 0.92rem;
+  margin: 0;
+}
+
+/* =========================================================
+   ข้อ 11: Responsive Grid (Desktop 4 แถว/คอลัมน์, Tablet 2, มือถือ 1)
+   ========================================================= */
+.responsive-grid-4-2-1 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+  margin-top: 18px;
+  counter-reset: card-idx -1;
+}
+
+.grid-item-card {
+  counter-increment: card-idx 1;
+  background: var(--bg-subcard);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  padding: 24px 20px 20px 20px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease, background-color 0.25s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Indexed Developer Tag [0], [1], [2]... like oakabc.github.io */
+.grid-item-card::before {
+  content: "[" counter(card-idx) "]";
+  position: absolute;
+  top: 14px;
+  right: 16px;
+  font-family: var(--font-mono), monospace;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #475569;
+  transition: color 0.25s ease;
+}
+
+.grid-item-card:hover::before {
+  color: var(--primary);
+}
+
+.grid-item-card::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, var(--primary), var(--accent));
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+.grid-item-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-hover);
+  border-color: var(--primary-border);
+  background: rgba(15, 23, 42, 0.98);
+}
+
+.grid-item-card:hover::after {
+  opacity: 1;
+}
+
+.grid-item-icon {
+  width: 46px;
+  height: 46px;
+  border-radius: 12px;
+  background: rgba(0, 229, 255, 0.08);
+  border: 1px solid var(--primary-border);
+  font-size: 1.4rem;
+  margin-bottom: 14px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 14px rgba(0, 229, 255, 0.12);
+}
+
+.grid-item-title {
+  font-family: 'Prompt', 'Inter', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text-main);
+  margin: 0 0 8px 0;
+}
+
+.grid-item-desc {
+  font-size: 0.89rem;
+  color: var(--text-muted);
+  margin: 0 0 14px 0;
+  line-height: 1.6;
+}
+
+.skill-bar-track {
+  width: 100%;
+  height: 6px;
+  background: #020617;
+  border: 1px solid rgba(30, 41, 59, 0.9);
+  border-radius: 999px;
+  overflow: hidden;
+  margin-bottom: 12px;
+}
+
+.skill-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--primary), var(--accent));
+  border-radius: 999px;
+  box-shadow: 0 0 10px var(--primary);
+}
+
+.grid-item-meta {
+  font-family: var(--font-mono), 'Prompt', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--primary);
+  background: var(--primary-soft);
+  border: 1px solid var(--primary-border);
+  padding: 4px 11px;
+  border-radius: 999px;
+  align-self: flex-start;
+}
+
+/* Filter Pills for Skills */
+.filter-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.filter-pill-btn {
+  background: rgba(2, 6, 23, 0.8);
+  color: var(--text-muted);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 6px 14px;
+  font-family: var(--font-mono), 'Prompt', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.filter-pill-btn:hover,
+.filter-pill-btn.active {
+  background: var(--primary);
+  color: #030712;
+  border-color: var(--primary);
+  box-shadow: 0 0 14px rgba(0, 229, 255, 0.4);
+}
+
+/* Tables */
+.table-responsive-wrapper {
+  overflow-x: auto;
+  margin-top: 22px;
+  border-radius: 14px;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--border-color);
+}
+
+.data-table,
+.skills-table {
+  width: 100%;
+  border-collapse: collapse;
+  border-radius: 14px;
+  overflow: hidden;
+  background: rgba(2, 6, 23, 0.75);
+}
+
+.data-table thead,
+.skills-table thead {
+  background: var(--table-head-bg);
+  color: var(--primary);
+  font-family: var(--font-mono), 'Prompt', sans-serif;
+  border-bottom: 1px solid var(--primary-border);
+}
+
+.data-table th,
+.data-table td,
+.skills-table th,
+.skills-table td {
+  padding: 14px 18px;
+  text-align: left;
+  border-bottom: 1px solid var(--border-color);
+  font-size: 0.92rem;
+  color: var(--text-main);
+}
+
+.data-table tbody tr:hover,
+.skills-table tbody tr:hover {
+  background-color: var(--table-row-hover);
+}
+
+/* =========================================================
+   ข้อ 12: ช่องทางติดต่อกลับ (Ordered List + ภาพแทน @ + ข้อมูลสมมติ)
+   ========================================================= */
+.contact-layout {
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  gap: 28px;
+  align-items: stretch;
+  margin-top: 18px;
+}
+
+.contact-ol-box {
+  background: linear-gradient(145deg, #020617 0%, #0f172a 65%, rgba(0, 229, 255, 0.08) 100%);
+  color: #ffffff;
+  padding: 30px;
+  border-radius: 18px;
+  border: 1px solid var(--primary-border);
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.5), inset 0 0 24px rgba(0, 229, 255, 0.05);
+  position: relative;
+  overflow: hidden;
+}
+
+.contact-ol-box h3 {
+  color: var(--primary);
+  margin-top: 0;
+  margin-bottom: 10px;
+  font-size: 1.22rem;
+  font-family: var(--font-mono), 'Prompt', sans-serif;
+}
+
+.contact-ol-box p {
+  color: #cbd5e1;
+  font-size: 0.92rem;
+  margin-bottom: 18px;
+}
+
+/* ข้อ 12.1: ใช้ Ordered List (ol) แสดงลำดับตัวเลขชัดเจน */
+ol.contact-ordered-list {
+  list-style-type: decimal;
+  padding-left: 22px;
+  margin: 0;
+}
+
+ol.contact-ordered-list li {
+  margin-bottom: 16px;
+  padding-left: 6px;
+  line-height: 1.65;
+  font-size: 0.94rem;
+  color: #f8fafc;
+}
+
+ol.contact-ordered-list li::marker {
+  color: var(--primary);
+  font-family: var(--font-mono), monospace;
+  font-weight: 700;
+}
+
+ol.contact-ordered-list li strong {
+  color: var(--primary);
+  font-family: var(--font-mono), 'Prompt', sans-serif;
+}
+
+/* ข้อ 12.2: รูปภาพแทนเครื่องหมาย @ */
+.at-symbol-img {
+  width: 20px;
+  height: 20px;
+  vertical-align: middle;
+  margin: 0 3px;
+  display: inline-block;
+  border-radius: 50%;
+  box-shadow: 0 0 8px rgba(0, 229, 255, 0.5);
+}
+
+.email-code-badge {
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: wrap;
+  background: rgba(2, 6, 23, 0.9);
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-family: var(--font-mono), monospace;
+  font-size: 0.9rem;
+  color: #e2e8f0;
+  border: 1px solid var(--primary-border);
+  margin-top: 4px;
+}
+
+.copy-mini-btn {
+  margin-left: 8px;
+  background: var(--primary-soft);
+  border: 1px solid var(--primary-border);
+  color: var(--primary);
+  border-radius: 6px;
+  padding: 3px 9px;
+  font-family: var(--font-mono), 'Prompt', sans-serif;
+  font-size: 0.76rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.copy-mini-btn:hover {
+  background: var(--primary);
+  color: #030712;
+  box-shadow: 0 0 10px rgba(0, 229, 255, 0.4);
+}
+
+.contact-form-card {
+  background: rgba(2, 6, 23, 0.75);
+  border: 1px solid var(--border-color);
+  border-radius: 18px;
+  padding: 28px;
+}
+
+/* Buttons & Forms (oakabc.github.io Neon Cyan & Dark Outline style) */
+.btn-group-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 14px;
+}
+
+.btn-action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 20px;
+  font-family: var(--font-mono), 'Prompt', sans-serif;
+  font-size: 0.88rem;
+  font-weight: 600;
+  border-radius: 10px;
+  cursor: pointer;
+  text-decoration: none !important;
+  transition: all 0.25s ease;
+  border: none;
+}
+
+.btn-primary-action {
+  background: var(--primary);
+  color: #030712 !important;
+  font-weight: 700;
+  box-shadow: 0 0 18px rgba(0, 229, 255, 0.4);
+}
+
+.btn-primary-action:hover {
+  background: #22d3ee;
+  transform: translateY(-2px);
+  box-shadow: 0 0 28px rgba(0, 229, 255, 0.75);
+}
+
+.btn-secondary-action {
+  background-color: rgba(15, 23, 42, 0.85);
+  color: var(--text-main) !important;
+  border: 1px solid var(--border-color);
+}
+
+.btn-secondary-action:hover {
+  background-color: var(--primary-soft);
+  border-color: var(--primary);
+  color: var(--primary) !important;
+  box-shadow: 0 0 16px rgba(0, 229, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  font-family: var(--font-mono), 'Prompt', sans-serif;
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: #cbd5e1;
+  font-size: 0.86rem;
+}
+
+.form-control-input {
+  width: 100%;
+  padding: 11px 14px;
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  font-family: inherit;
+  font-size: 0.94rem;
+  color: var(--text-main);
+  background-color: #030712;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.form-control-input::placeholder {
+  color: #475569;
+}
+
+.form-control-input:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(0, 229, 255, 0.18);
+}
+
+.form-status-msg {
+  display: none;
+  margin-top: 14px;
+  padding: 12px 16px;
+  border-radius: 10px;
+  background-color: rgba(34, 197, 94, 0.15);
+  color: #4ade80;
+  border: 1px solid rgba(34, 197, 94, 0.4);
+  font-family: var(--font-mono), 'Prompt', sans-serif;
+  font-weight: 600;
+  font-size: 0.88rem;
+}
+
+footer.site-footer {
+  text-align: center;
+  padding: 32px 20px;
+  color: var(--text-muted);
+  border-top: 1px solid var(--border-color);
+  margin-top: 28px;
+  font-family: var(--font-mono), 'Prompt', sans-serif;
+  font-size: 0.88rem;
+}
+
+/* =========================================================
+   Media Queries สำหรับ Responsive Layout
+   - Desktop (> 991.98px): แสดงข้อมูล 4 แถว/คอลัมน์
+   - Tablet (576px - 991.98px): แสดงข้อมูล 2 แถว/คอลัมน์ + Hamburger Menu
+   - Mobile (< 576px): แสดงข้อมูล 1 แถว/คอลัมน์ + Hamburger Menu
+   ========================================================= */
+
+@media (max-width: 991.98px) {
+  .nav-toggler {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .nav-menu {
+    display: none;
+    width: 100%;
+    flex-direction: column;
+    align-items: stretch;
+    padding-top: 12px;
+    margin-top: 12px;
+    border-top: 1px solid var(--border-color);
+  }
+
+  .nav-menu.show {
+    display: flex;
+  }
+
+  .nav-link-item {
+    padding: 10px 14px;
+  }
+
+  .responsive-grid-4-2-1 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .quick-stats-row {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .contact-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .hero-profile {
+    flex-direction: column;
+    text-align: center;
+    gap: 22px;
+  }
+
+  .badge-row {
+    justify-content: center;
+  }
+
+  .short-bio-box {
+    text-align: left;
+  }
+
+  .btn-group-row {
+    justify-content: center;
+  }
+
+  .responsive-grid-4-2-1 {
+    grid-template-columns: 1fr;
+  }
+
+  .quick-stats-row {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .card-section {
+    padding: 52px 18px 24px 18px;
+  }
+
+  h1.student-name {
+    font-size: 1.65rem;
+  }
+}

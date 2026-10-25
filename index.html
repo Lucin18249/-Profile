@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Profile - ธนรัตน์ เพชรอ่วม (Tanarat Phetaum)</title>
+  <!-- Bootstrap 5.3 CSS สำหรับรองรับ Responsive Grid & Component มาตรฐาน -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- ไฟล์ CSS หลักของโปรเจกต์ -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body id="top">
+
+  <!-- ข้อ 9 & 10: Navbar แบบ Toggle ตาม section ที่มี (Responsive Hamburger Menu + Anchor Links #id_name) -->
+  <nav class="site-navbar" aria-label="Main Navigation">
+    <div class="nav-container">
+      <a href="#profile" class="nav-brand">
+        <img src="My.jpg" alt="ธนรัตน์ เพชรอ่วม" class="nav-brand-avatar">
+        <span>Tanarat.P (Win)</span>
+      </a>
+
+      <!-- เมนู Anchor Links เชื่อมไปยังแต่ละ Section (#id_name) -->
+      <ul class="nav-menu" id="navbarMenu">
+        <li><a class="nav-link-item active" href="#profile" onclick="closeNavbar()">🏠 หน้าแรก</a></li>
+        <li><a class="nav-link-item" href="#about" onclick="closeNavbar()">👋 เกี่ยวกับฉัน</a></li>
+        <li><a class="nav-link-item" href="#education" onclick="closeNavbar()">🎓 การศึกษา</a></li>
+        <li><a class="nav-link-item" href="#skills" onclick="closeNavbar()">⚡ ทักษะ</a></li>
+        <li><a class="nav-link-item" href="#experience" onclick="closeNavbar()">💼 ผลงาน</a></li>
+        <li><a class="nav-link-item" href="#favorites" onclick="closeNavbar()">🍜 สิ่งที่สนใจ</a></li>
+        <li><a class="nav-link-item" href="#contact" onclick="closeNavbar()">📩 ติดต่อกลับ</a></li>
+      </ul>
+
+      <div class="nav-controls-right">
+        <button type="button" class="theme-toggle-btn" id="themeToggleBtn" onclick="toggleTheme()" aria-label="สลับโหมดสีหน้าเว็บ">
+          <span id="themeIcon">🌙</span>
+          <span id="themeLabel">โหมดมืด</span>
+        </button>
+
+        <!-- Hamburger Button เมื่อหน้าจอมีขนาดเล็กลง -->
+        <button type="button" class="nav-toggler" id="navbarToggler" aria-controls="navbarMenu" aria-expanded="false" aria-label="Toggle navigation" onclick="toggleNavbar()">
+          <span class="hamburger-lines">
+            <span></span>
+            <span></span>
+            <span></span>
+          </span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <main class="main-container">
+
+    <!-- ส่วนหัวโปรไฟล์: ข้อ 1, 2, 3, 4, 5, 6 -->
+    <section id="profile" class="card-section">
+      <div class="hero-profile">
+        <!-- ข้อ 1: การใช้รูป Display แบบวงกลม -->
+        <div class="avatar-wrapper">
+          <div class="avatar-ring">
+            <img src="My.jpg" alt="รูปโปรไฟล์ ธนรัตน์ เพชรอ่วม (วิน)" class="profile-img-circle rounded-circle">
+          </div>
+          <span class="status-pill">
+            <span class="status-dot"></span>
+            CAI Engineering • PIM
+          </span>
+        </div>
+
+        <div class="hero-info">
+          <div class="badge-row">
+            <span class="badge-tag">✨ Full Stack Web Development • Section G2</span>
+            <span class="badge-tag badge-tag-crimson">🆔 รหัสนักศึกษา 6840010210</span>
+          </div>
+
+          <!-- ข้อ 2: ชื่อ-นามสกุลแบบ h1 -->
+          <h1 class="student-name">ธนรัตน์ เพชรอ่วม (Tanarat Phetaum)</h1>
+
+          <!-- ข้อ 3, 4, 5: สาขาวิชาเป็นตัวเอน em, ชื่อคณะ, และชื่อสถาบันฯ พร้อมลิงก์ไปยัง http://pim.ac.th -->
+          <p class="affiliation-list">
+            <strong>ชื่อเล่น:</strong> วิน (Win)<br>
+            <!-- ข้อ 3: สาขาวิชาที่นักศึกษาสังกัด เป็นตัวเอน em -->
+            <em>สาขาวิชาวิศวกรรมคอมพิวเตอร์และปัญญาประดิษฐ์ (Computer Engineering and Artificial Intelligence - CAI)</em><br>
+            <!-- ข้อ 4: ชื่อคณะ -->
+            <span>คณะวิศวกรรมศาสตร์และเทคโนโลยี (Faculty of Engineering and Technology)</span><br>
+            <!-- ข้อ 5: ชื่อสถาบันฯ โดยมีลิงก์ไปยังเว็บไซต์สถาบัน (http://pim.ac.th) -->
+            <strong>สถาบัน:</strong> <a href="http://pim.ac.th" target="_blank" rel="noopener noreferrer" class="pim-link">สถาบันการจัดการปัญญาภิวัฒน์ (Panyapiwat Institute of Management - PIM)</a>
+          </p>
+
+          <!-- ข้อ 6: ประวัติโดยย่อของตนเอง เป็นคำแนะนำสั้น ๆ -->
+          <div class="short-bio-box">
+            <strong>💡 คำแนะนำตัวสั้น ๆ:</strong> นักศึกษาชั้นปีที่ 1 สาขาวิศวกรรมคอมพิวเตอร์และปัญญาประดิษฐ์ (CAI) ผู้หลงใหลในการพัฒนาเว็บแอปพลิเคชันแบบ Full Stack และการประยุกต์ใช้เทคโนโลยี AI เพื่อสร้างโซลูชันที่ตอบโจทย์การใช้งานจริง
+          </div>
+
+          <div class="quick-stats-row">
+            <div class="stat-mini-card">
+              <span class="stat-mini-value">ปีที่ 1</span>
+              <span class="stat-mini-label">ระดับชั้นศึกษา (CAI)</span>
+            </div>
+            <div class="stat-mini-card">
+              <span class="stat-mini-value">8+</span>
+              <span class="stat-mini-label">ทักษะการพัฒนาโปรแกรม</span>
+            </div>
+            <div class="stat-mini-card">
+              <span class="stat-mini-value">4+</span>
+              <span class="stat-mini-label">โครงงานและแล็บปฏิบัติการ</span>
+            </div>
+            <div class="stat-mini-card">
+              <span class="stat-mini-value">4 / 2 / 1</span>
+              <span class="stat-mini-label">Responsive Grid System</span>
+            </div>
+          </div>
+
+          <div class="btn-group-row">
+            <a href="#contact" class="btn-action btn-primary-action">📩 ติดต่อฉัน (Contact Section)</a>
+            <a href="#skills" class="btn-action btn-secondary-action">⚡ ดูทักษะ (Skills)</a>
+            <a href="#experience" class="btn-action btn-secondary-action">💼 ดูผลงาน (Projects)</a>
+            <a href="https://github.com/Lucin18249" target="_blank" rel="noopener noreferrer" class="btn-action btn-secondary-action">💻 GitHub: Lucin18249</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ข้อ 7: การใช้เส้นแบ่งย่อหน้า -->
+    <hr class="section-divider">
+
+    <!-- ข้อ 8: Section เกี่ยวกับตัวฉัน (About Me) + ข้อ 11 Responsive 4 / 2 / 1 -->
+    <section id="about" class="card-section">
+      <div class="section-header-row">
+        <div>
+          <h2 class="section-title">👋 เกี่ยวกับตัวฉัน (About Me)</h2>
+          <p class="section-subtitle">ประวัติโดยย่อ ความสนใจ และเป้าหมายในการพัฒนาตนเองด้านวิศวกรรมซอฟต์แวร์</p>
+        </div>
+        <span class="badge-tag">Work-based Education</span>
+      </div>
+
+      <p style="text-align: justify; margin-bottom: 12px;">
+        &emsp;&emsp;สวัสดีครับ ผมชื่อ <strong>ธนรัตน์ เพชรอ่วม (วิน)</strong> ปัจจุบันกำลังศึกษาอยู่ในระดับปริญญาตรี <em>สาขาวิชาวิศวกรรมคอมพิวเตอร์และปัญญาประดิษฐ์ (CAI)</em> คณะวิศวกรรมศาสตร์และเทคโนโลยี <a href="http://pim.ac.th" target="_blank" rel="noopener noreferrer" class="pim-link">สถาบันการจัดการปัญญาภิวัฒน์ (PIM)</a> มีความสนใจด้านการพัฒนาเว็บแอปพลิเคชันแบบ Full Stack (HTML5, CSS3, JavaScript, Bootstrap, Node.js) รวมถึงการออกแบบโครงสร้างข้อมูลและอัลกอริทึมเพื่อแก้ปัญหาเชิงวิศวกรรม
+      </p>
+      <hr class="paragraph-divider">
+      <p style="text-align: justify; margin-bottom: 16px;">
+        &emsp;&emsp;ผมมุ่งมั่นฝึกฝนทักษะการเขียนโปรแกรมอย่างต่อเนื่องผ่านการลงมือทำโปรเจกต์จริงตามแนวคิด Work-based Education ของสถาบันฯ เพื่อเตรียมความพร้อมสู่การเป็นนักพัฒนาซอฟต์แวร์มืออาชีพที่สามารถสร้างระบบที่มีเสถียรภาพ ใช้งานง่าย และรองรับทุกขนาดหน้าจอ (Responsive Web Design)
+      </p>
+
+      <!-- ข้อ 11: แสดงข้อมูลแบบ Responsive (Desktop 4 แถว/คอลัมน์, Tablet 2, มือถือ 1) -->
+      <div class="responsive-grid-4-2-1">
+        <div class="grid-item-card">
+          <div>
+            <span class="grid-item-icon">🎯</span>
+            <h3 class="grid-item-title">เป้าหมายอาชีพ</h3>
+            <p class="grid-item-desc">พัฒนาสู่ตำแหน่ง Full Stack Developer และ AI Software Engineer ที่สร้างนวัตกรรมใช้งานได้จริง</p>
+          </div>
+          <span class="grid-item-meta">Career Goal</span>
+        </div>
+
+        <div class="grid-item-card">
+          <div>
+            <span class="grid-item-icon">💻</span>
+            <h3 class="grid-item-title">ความถนัดหลัก</h3>
+            <p class="grid-item-desc">การออกแบบหน้าเว็บแบบ Responsive, การเขียนโปรแกรมเชิงวัตถุ (OOP) และการจัดการโครงสร้างข้อมูล</p>
+          </div>
+          <span class="grid-item-meta">Core Strengths</span>
+        </div>
+
+        <div class="grid-item-card">
+          <div>
+            <span class="grid-item-icon">🤖</span>
+            <h3 class="grid-item-title">ความสนใจพิเศษ</h3>
+            <p class="grid-item-desc">ระบบอัตโนมัติ (Automation), ปัญญาประดิษฐ์ (AI) และการเชื่อมต่อฐานข้อมูลสำหรับเว็บสมัยใหม่</p>
+          </div>
+          <span class="grid-item-meta">AI &amp; Web Tech</span>
+        </div>
+
+        <div class="grid-item-card">
+          <div>
+            <span class="grid-item-icon">🤝</span>
+            <h3 class="grid-item-title">การทำงานร่วมกัน</h3>
+            <p class="grid-item-desc">ใช้ Git/GitHub ในการจัดการเวอร์ชันของโค้ด และทำงานร่วมกับทีมได้อย่างเป็นระบบ</p>
+          </div>
+          <span class="grid-item-meta">Teamwork &amp; Git</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ข้อ 7: การใช้เส้นแบ่งย่อหน้า -->
+    <hr class="section-divider">
+
+    <!-- ข้อ 8: Section การศึกษา (Education) + ข้อ 11 Responsive 4 / 2 / 1 -->
+    <section id="education" class="card-section">
+      <div class="section-header-row">
+        <div>
+          <h2 class="section-title">🎓 การศึกษา (Education)</h2>
+          <p class="section-subtitle">ประวัติการศึกษาและรายวิชาสำคัญที่ได้เรียนรู้ (Desktop 4 คอลัมน์ • Tablet 2 คอลัมน์ • มือถือ 1 คอลัมน์)</p>
+        </div>
+        <span class="badge-tag">B.Eng. (CAI)</span>
+      </div>
+
+      <div class="responsive-grid-4-2-1">
+        <div class="grid-item-card">
+          <div>
+            <span class="grid-item-icon">🏛️</span>
+            <h3 class="grid-item-title">ปริญญาตรี (2568 - ปัจจุบัน)</h3>
+            <p class="grid-item-desc">วิศวกรรมศาสตรบัณฑิต สาขาวิศวกรรมคอมพิวเตอร์และปัญญาประดิษฐ์ (CAI) สถาบันการจัดการปัญญาภิวัฒน์ (PIM)</p>
+          </div>
+          <span class="grid-item-meta">กำลังศึกษาชั้นปีที่ 1-2</span>
+        </div>
+
+        <div class="grid-item-card">
+          <div>
+            <span class="grid-item-icon">🌐</span>
+            <h3 class="grid-item-title">Full Stack Web Dev</h3>
+            <p class="grid-item-desc">ศึกษาสถาปัตยกรรมเว็บ HTML5, CSS3, Responsive Layout, Bootstrap 5, JavaScript และ Node.js</p>
+          </div>
+          <span class="grid-item-meta">Section G2</span>
+        </div>
+
+        <div class="grid-item-card">
+          <div>
+            <span class="grid-item-icon">☕</span>
+            <h3 class="grid-item-title">Object-Oriented Programming</h3>
+            <p class="grid-item-desc">ศึกษาการออกแบบคลาส การสืบทอดคุณสมบัติ (Inheritance) และ Polymorphism ด้วยภาษา Java</p>
+          </div>
+          <span class="grid-item-meta">Java OOP</span>
+        </div>
+
+        <div class="grid-item-card">
+          <div>
+            <span class="grid-item-icon">📊</span>
+            <h3 class="grid-item-title">Data Structures &amp; Algorithms</h3>
+            <p class="grid-item-desc">การจัดการข้อมูลเชิงเส้นและไม่เชิงเส้น Stack, Queue, Linked List และการวิเคราะห์ความซับซ้อน</p>
+          </div>
+          <span class="grid-item-meta">Python &amp; Java</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ข้อ 7: การใช้เส้นแบ่งย่อหน้า -->
+    <hr class="section-divider">
+
+    <!-- ข้อ 8: Section ทักษะ (Skills) + ข้อ 11 Responsive 4 / 2 / 1 -->
+    <section id="skills" class="card-section">
+      <div class="section-header-row">
+        <div>
+          <h2 class="section-title">⚡ ทักษะความสามารถ (Skills)</h2>
+          <p class="section-subtitle">ทักษะด้านการเขียนโปรแกรมและเครื่องมือพัฒนาซอฟต์แวร์ (แสดงผลแบบ Responsive 4 / 2 / 1 แถวตามขนาดหน้าจอ)</p>
+        </div>
+        <div class="filter-pills" role="group" aria-label="ตัวกรองหมวดหมู่ทักษะ">
+          <button type="button" class="filter-pill-btn active" onclick="filterSkills('all', this)">ทั้งหมด (8)</button>
+          <button type="button" class="filter-pill-btn" onclick="filterSkills('web', this)">Web Frontend</button>
+          <button type="button" class="filter-pill-btn" onclick="filterSkills('programming', this)">Programming &amp; AI</button>
+          <button type="button" class="filter-pill-btn" onclick="filterSkills('tools', this)">Database &amp; Tools</button>
+        </div>
+      </div>
+
+      <!-- Responsive Grid 4 แถว/คอลัมน์ บน Desktop, 2 บน Tablet, 1 บนมือถือ -->
+      <div class="responsive-grid-4-2-1" id="skillsGrid">
+        <div class="grid-item-card skill-card-item" data-category="web">
+          <div>
+            <span class="grid-item-icon">🌐</span>
+            <h3 class="grid-item-title">HTML5 &amp; Semantic</h3>
+            <p class="grid-item-desc">วางโครงสร้างเว็บอย่างถูกหลักความหมาย ตาราง ฟอร์ม และ Anchor Links</p>
+            <div class="skill-bar-track"><div class="skill-bar-fill" style="width: 78%;"></div></div>
+          </div>
+          <span class="grid-item-meta">ระดับพลัง: ⭐⭐</span>
+        </div>
+
+        <div class="grid-item-card skill-card-item" data-category="web">
+          <div>
+            <span class="grid-item-icon">🎨</span>
+            <h3 class="grid-item-title">CSS3 &amp; Responsive</h3>
+            <p class="grid-item-desc">จัดหน้าด้วย Flexbox, CSS Grid, Media Queries และ Bootstrap 5</p>
+            <div class="skill-bar-track"><div class="skill-bar-fill" style="width: 65%;"></div></div>
+          </div>
+          <span class="grid-item-meta">ระดับพลัง: ⭐</span>
+        </div>
+
+        <div class="grid-item-card skill-card-item" data-category="web">
+          <div>
+            <span class="grid-item-icon">⚡</span>
+            <h3 class="grid-item-title">JavaScript (ES6+)</h3>
+            <p class="grid-item-desc">การจัดการ DOM Events, Toggle Menu และฟังก์ชันโต้ตอบกับผู้ใช้งาน</p>
+            <div class="skill-bar-track"><div class="skill-bar-fill" style="width: 75%;"></div></div>
+          </div>
+          <span class="grid-item-meta">ระดับพลัง: ⭐⭐</span>
+        </div>
+
+        <div class="grid-item-card skill-card-item" data-category="programming">
+          <div>
+            <span class="grid-item-icon">☕</span>
+            <h3 class="grid-item-title">Java (OOP)</h3>
+            <p class="grid-item-desc">พัฒนาโปรแกรมเชิงวัตถุ การจัดการคลาส และโครงสร้างข้อมูลพื้นฐาน</p>
+            <div class="skill-bar-track"><div class="skill-bar-fill" style="width: 76%;"></div></div>
+          </div>
+          <span class="grid-item-meta">ระดับพลัง: ⭐⭐</span>
+        </div>
+
+        <div class="grid-item-card skill-card-item" data-category="programming">
+          <div>
+            <span class="grid-item-icon">🐍</span>
+            <h3 class="grid-item-title">Python &amp; AI Basics</h3>
+            <p class="grid-item-desc">การเขียนสคริปต์ประมวลผลข้อมูล โครงสร้างข้อมูล และพื้นฐานปัญญาประดิษฐ์</p>
+            <div class="skill-bar-track"><div class="skill-bar-fill" style="width: 75%;"></div></div>
+          </div>
+          <span class="grid-item-meta">ระดับพลัง: ⭐⭐</span>
+        </div>
+
+        <div class="grid-item-card skill-card-item" data-category="web">
+          <div>
+            <span class="grid-item-icon">🅱️</span>
+            <h3 class="grid-item-title">Bootstrap 5</h3>
+            <p class="grid-item-desc">การสร้าง Navbar แบบ Hamburger Toggle และระบบ Responsive Grid System</p>
+            <div class="skill-bar-track"><div class="skill-bar-fill" style="width: 80%;"></div></div>
+          </div>
+          <span class="grid-item-meta">ระดับพลัง: ⭐⭐</span>
+        </div>
+
+        <div class="grid-item-card skill-card-item" data-category="tools">
+          <div>
+            <span class="grid-item-icon">🔧</span>
+            <h3 class="grid-item-title">Git &amp; GitHub</h3>
+            <p class="grid-item-desc">การจัดการ Source Code, Repository และการทำงานร่วมกันเป็นทีม</p>
+            <div class="skill-bar-track"><div class="skill-bar-fill" style="width: 78%;"></div></div>
+          </div>
+          <span class="grid-item-meta">ระดับพลัง: ⭐⭐</span>
+        </div>
+
+        <div class="grid-item-card skill-card-item" data-category="tools">
+          <div>
+            <span class="grid-item-icon">🗄️</span>
+            <h3 class="grid-item-title">SQL &amp; Database</h3>
+            <p class="grid-item-desc">การออกแบบตารางข้อมูลและความสัมพันธ์เบื้องต้นสำหรับเว็บแอปพลิเคชัน</p>
+            <div class="skill-bar-track"><div class="skill-bar-fill" style="width: 90%;"></div></div>
+          </div>
+          <span class="grid-item-meta">ระดับพลัง: ⭐⭐⭐</span>
+        </div>
+      </div>
+
+      <!-- ตารางสรุปทักษะเพิ่มเติม -->
+      <div class="table-responsive-wrapper">
+        <table class="skills-table">
+          <thead>
+            <tr>
+              <th>ทักษะ (Skill)</th>
+              <th>ระดับความชำนาญ (Level)</th>
+              <th>ทักษะ (Skill)</th>
+              <th>ระดับความชำนาญ (Level)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>HTML5 &amp; Semantic Markup</strong></td>
+              <td>⭐⭐ (ดี)</td>
+              <td><strong>CSS3 / Responsive Web Design</strong></td>
+              <td>⭐ (พื้นฐานแน่น)</td>
+            </tr>
+            <tr>
+              <td><strong>JavaScript (ES6+)</strong></td>
+              <td>⭐⭐ (ดี)</td>
+              <td><strong>Java (OOP) &amp; Python</strong></td>
+              <td>⭐⭐ (ดี)</td>
+            </tr>
+            <tr>
+              <td><strong>Bootstrap 5 &amp; Grid System</strong></td>
+              <td>⭐⭐ (ดี)</td>
+              <td><strong>SQL &amp; Relational Database</strong></td>
+              <td>⭐⭐⭐ (ดีมาก)</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ข้อ 7: การใช้เส้นแบ่งย่อหน้า -->
+    <hr class="section-divider">
+
+    <!-- ข้อ 8: Section และอื่น ๆ 1 - ประสบการณ์และผลงาน (Experience & Projects) -->
+    <section id="experience" class="card-section">
+      <div class="section-header-row">
+        <div>
+          <h2 class="section-title">💼 ประสบการณ์และผลงาน (Experience &amp; Projects)</h2>
+          <p class="section-subtitle">โครงงานและประสบการณ์การพัฒนาซอฟต์แวร์ในรายวิชาต่าง ๆ</p>
+        </div>
+        <span class="badge-tag">Academic &amp; Lab Projects</span>
+      </div>
+
+      <div class="responsive-grid-4-2-1">
+        <div class="grid-item-card">
+          <div>
+            <span class="grid-item-icon">🖥️</span>
+            <h3 class="grid-item-title">Responsive Portfolio Web</h3>
+            <p class="grid-item-desc">พัฒนาเว็บไซต์แนะนำตัวแบบ Responsive พร้อม Hamburger Navbar และระบบกริด 4/2/1</p>
+          </div>
+          <span class="grid-item-meta">ปี 2026 • Full Stack</span>
+        </div>
+
+        <div class="grid-item-card">
+          <div>
+            <span class="grid-item-icon">🏪</span>
+            <h3 class="grid-item-title">Automated Cash System</h3>
+            <p class="grid-item-desc">โครงงานออกแบบแนวคิดระบบทอนเงินอัตโนมัติสำหรับร้านสะดวกซื้อ 7-Eleven</p>
+          </div>
+          <span class="grid-item-meta">ปี 2026 • System Design</span>
+        </div>
+
+        <div class="grid-item-card">
+          <div>
+            <span class="grid-item-icon">📦</span>
+            <h3 class="grid-item-title">Java OOP Application</h3>
+            <p class="grid-item-desc">พัฒนาโปรแกรมประยุกต์เชิงวัตถุด้วยภาษา Java โดยเน้นหลักการ Encapsulation &amp; Inheritance</p>
+          </div>
+          <span class="grid-item-meta">ปี 2026 • Java OOP</span>
+        </div>
+
+        <div class="grid-item-card">
+          <div>
+            <span class="grid-item-icon">🔗</span>
+            <h3 class="grid-item-title">Data Structures Lab</h3>
+            <p class="grid-item-desc">การจำลองการทำงานของโครงสร้างข้อมูล Queue, Stack และ Singly Linked List</p>
+          </div>
+          <span class="grid-item-meta">ปี 2025 • Algorithms</span>
+        </div>
+      </div>
+
+      <div class="table-responsive-wrapper">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th style="width: 180px;">ปี (Year)</th>
+              <th>ผลงาน / ประสบการณ์ (Work &amp; Projects)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="badge-tag">2026 - ปัจจุบัน</span></td>
+              <td>ศึกษาและพัฒนาโปรเจกต์รายวิชา Full Stack Web Development สถาบันการจัดการปัญญาภิวัฒน์ (PIM)</td>
+            </tr>
+            <tr>
+              <td><span class="badge-tag">2026</span></td>
+              <td>โครงงานออกแบบแนวคิดระบบทอนเงินอัตโนมัติ (Automated Cash System) สำหรับร้าน 7-Eleven</td>
+            </tr>
+            <tr>
+              <td><span class="badge-tag">2026</span></td>
+              <td>พัฒนาโปรแกรมเชิงวัตถุด้วยภาษา Java (Object-Oriented Programming)</td>
+            </tr>
+            <tr>
+              <td><span class="badge-tag">2025</span></td>
+              <td>การพัฒนาและประยุกต์ใช้โครงสร้างข้อมูล (Queue, Stack, Singly Linked List)</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ข้อ 7: การใช้เส้นแบ่งย่อหน้า -->
+    <hr class="section-divider">
+
+    <!-- ข้อ 8: Section และอื่น ๆ 2 - สิ่งที่สนใจและอาหารที่ชอบ (Favorites & Interests) -->
+    <section id="favorites" class="card-section">
+      <div class="section-header-row">
+        <div>
+          <h2 class="section-title">🍜 อาหารที่ชอบและงานอดิเรก (Favorites &amp; Interests)</h2>
+          <p class="section-subtitle">สิ่งที่ชื่นชอบในชีวิตประจำวัน (จัดแสดงแบบ Responsive 4 / 2 / 1 แถว)</p>
+        </div>
+        <span class="badge-tag">Lifestyle &amp; Hobbies</span>
+      </div>
+
+      <div class="responsive-grid-4-2-1">
+        <div class="grid-item-card">
+          <div>
+            <span class="grid-item-icon">🍜</span>
+            <h3 class="grid-item-title">ราเมงทงคตสึ</h3>
+            <p class="grid-item-desc">Tonkotsu Ramen น้ำซุปกระดูกหมูเข้มข้นหอมกลมกล่อม ทานคู่กับหมูชาชูและไข่ดอง</p>
+          </div>
+          <span class="grid-item-meta">Favorite Menu #1</span>
+        </div>
+
+        <div class="grid-item-card">
+          <div>
+            <span class="grid-item-icon">🍛</span>
+            <h3 class="grid-item-title">ข้าวกะเพราหมูกรอบไข่ดาว</h3>
+            <p class="grid-item-desc">เมนูอาหารจานด่วนสุดคลาสสิก หมูกรอบชิ้นโตผัดใบกะเพราหอม ๆ ทานได้ทุกวัน</p>
+          </div>
+          <span class="grid-item-meta">Favorite Menu #2</span>
+        </div>
+
+        <div class="grid-item-card">
+          <div>
+            <span class="grid-item-icon">🍵</span>
+            <h3 class="grid-item-title">ชาเขียวมัทฉะลาเต้</h3>
+            <p class="grid-item-desc">Matcha Latte เครื่องดื่มเพิ่มความสดชื่นและสมาธิระหว่างนั่งเขียนโค้ดทำโปรเจกต์</p>
+          </div>
+          <span class="grid-item-meta">Favorite Drink #3</span>
+        </div>
+
+        <div class="grid-item-card">
+          <div>
+            <span class="grid-item-icon">🎮</span>
+            <h3 class="grid-item-title">การฝึกโจทย์เขียนโค้ด</h3>
+            <p class="grid-item-desc">ยามว่างชอบศึกษาเทคโนโลยีเว็บใหม่ ๆ ทดลองสร้าง UI และฝึกแก้โจทย์อัลกอริทึม</p>
+          </div>
+          <span class="grid-item-meta">Hobby #4</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ข้อ 7: การใช้เส้นแบ่งย่อหน้า -->
+    <hr class="section-divider">
+
+    <!-- ข้อ 12: เพิ่มช่องทางติดต่อกลับ (Ordered List + อีเมลสถาบันใช้ภาพแทน @ + เบอร์โทรสมมติ + ที่อยู่สมมติ + อื่น ๆ) -->
+    <section id="contact" class="card-section">
+      <div class="section-header-row">
+        <div>
+          <h2 class="section-title">📩 ช่องทางติดต่อกลับ (Contact Me)</h2>
+          <p class="section-subtitle">ข้อมูลการติดต่อในรูปแบบ Ordered List (ol) พร้อมป้องกันสแปมด้วยการใช้รูปภาพแทนเครื่องหมาย @ และใช้ข้อมูลสมมติเพื่อความปลอดภัย</p>
+        </div>
+        <span class="badge-tag">Anti-Spam Protected</span>
+      </div>
+
+      <div class="contact-layout">
+        <!-- ข้อ 12.1 - 12.5: ข้อมูลการติดต่อโดยใช้ Ordered List (ol) -->
+        <div class="contact-ol-box">
+          <h3>📋 ข้อมูลการติดต่อ (Contact Channels)</h3>
+          <p>สามารถติดต่อหรือติดตามผลงานของผมได้ตามช่องทางด้านล่างนี้:</p>
+
+          <!-- ข้อ 12.1: ใช้ Ordered List (ol) -->
+          <ol class="contact-ordered-list">
+            <!-- ข้อ 12.2: อีเมลสถาบันฯ ใช้ภาพแทน @ เพื่อป้องกันการโดนสแปม หลีกเลี่ยงการใช้เมลจริง -->
+            <li>
+              <strong>อีเมลสถาบันฯ (Institutional E-mail):</strong><br>
+              <span class="email-code-badge">
+                6840010210.demo<img src="at-symbol.png" alt="@" title="เครื่องหมาย @" class="at-symbol-img">stu.pim.ac.th
+                <button type="button" class="copy-mini-btn" id="copyEmailBtn" onclick="copyDemoEmail()">📋 คัดลอก</button>
+              </span>
+              <div style="font-size: 0.81rem; color: #cbd5e1; margin-top: 5px;">
+                *(ใช้อีเมลสมมติของสถาบันฯ และใช้รูปภาพแทน @ เพื่อป้องกันบอทสแปม)*
+              </div>
+            </li>
+
+            <!-- ข้อ 12.3: เบอร์โทรศัพท์ (หลีกเลี่ยงการใช้เบอร์จริง) -->
+            <li>
+              <strong>เบอร์โทรศัพท์ (Phone Number):</strong><br>
+              089-000-1234 <em>(เบอร์โทรศัพท์สมมติสำหรับการฝึกปฏิบัติ)</em>
+            </li>
+
+            <!-- ข้อ 12.4: ที่อยู่ (หลีกเลี่ยงการใช้สถานที่จริง) -->
+            <li>
+              <strong>ที่อยู่ (Address):</strong><br>
+              99/99 หมู่บ้านตัวอย่าง ถนนแจ้งวัฒนะ ตำบลบางตลาด อำเภอปากเกร็ด จังหวัดนนทบุรี 11120 <em>(สถานที่สมมติ)</em>
+            </li>
+
+            <!-- ข้อ 12.5: อื่น ๆ ตามต้องการ -->
+            <li>
+              <strong>GitHub Portfolio:</strong><br>
+              <a href="https://github.com/Lucin18249" target="_blank" rel="noopener noreferrer" style="color: #60a5fa; text-decoration: underline;">github.com/Lucin18249</a>
+            </li>
+
+            <li>
+              <strong>LINE Official / Social ID (สมมติ):</strong><br>
+              Line ID: win_cai_pim_demo &nbsp;|&nbsp; Discord: WinCAI#2026
+            </li>
+          </ol>
+        </div>
+
+        <!-- แบบฟอร์มส่งข้อความติดต่อกลับ -->
+        <div class="contact-form-card">
+          <h3 style="font-size: 1.18rem; font-family: 'Prompt', sans-serif; margin-top: 0; margin-bottom: 14px;">✉️ ส่งข้อความถึงฉัน (Quick Message Form)</h3>
+          <form id="contactForm" onsubmit="handleContactSubmit(event)">
+            <div class="form-group">
+              <label for="senderName">ชื่อ-นามสกุล (Your Name) *</label>
+              <input type="text" id="senderName" name="senderName" class="form-control-input" placeholder="กรอกชื่อ-นามสกุลของคุณ" required>
+            </div>
+
+            <div class="form-group">
+              <label for="senderEmail">อีเมลติดต่อกลับ (Your E-mail) *</label>
+              <input type="email" id="senderEmail" name="senderEmail" class="form-control-input" placeholder="name@example.com" required>
+            </div>
+
+            <div class="form-group">
+              <label for="messageTopic">หัวข้อเรื่อง (Subject) *</label>
+              <input type="text" id="messageTopic" name="messageTopic" class="form-control-input" placeholder="ระบุหัวข้อที่ต้องการติดต่อ" required>
+            </div>
+
+            <div class="form-group">
+              <label for="messageBody">ข้อความ (Message) *</label>
+              <textarea id="messageBody" name="messageBody" rows="4" class="form-control-input" placeholder="พิมพ์ข้อความของคุณที่นี่..." required></textarea>
+            </div>
+
+            <div class="btn-group-row">
+              <button type="submit" class="btn-action btn-primary-action">🚀 ส่งข้อความ (Send Message)</button>
+              <button type="reset" class="btn-action btn-secondary-action" onclick="resetContactStatus()">ล้างข้อมูล (Reset)</button>
+            </div>
+
+            <div id="formStatusMessage" class="form-status-msg" role="status" aria-live="polite"></div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <footer class="site-footer">
+      <div class="btn-group-row" style="justify-content: center; margin-bottom: 14px;">
+        <a href="#top" class="btn-action btn-secondary-action">⬆️ กลับขึ้นด้านบน (Back to Top)</a>
+        <a href="http://pim.ac.th" target="_blank" rel="noopener noreferrer" class="btn-action btn-secondary-action">🏛️ เว็บไซต์สถาบัน PIM</a>
+        <a href="https://github.com/Lucin18249" target="_blank" rel="noopener noreferrer" class="btn-action btn-secondary-action">🔗 GitHub: Lucin18249</a>
+      </div>
+      <p style="margin: 0;">© 2026 ธนรัตน์ เพชรอ่วม (Tanarat Phetaum - 6840010210) • สาขาวิศวกรรมคอมพิวเตอร์และปัญญาประดิษฐ์ (CAI) • <a href="http://pim.ac.th" target="_blank" rel="noopener noreferrer" class="pim-link">สถาบันการจัดการปัญญาภิวัฒน์ (PIM)</a></p>
+    </footer>
+
+  </main>
+
+  <script>
+    // ฟังก์ชันเปิด-ปิด Hamburger Menu บนหน้าจอขนาดเล็ก (Responsive Navbar Toggle)
+    function toggleNavbar() {
+      var menu = document.getElementById('navbarMenu');
+      var toggler = document.getElementById('navbarToggler');
+      if (!menu || !toggler) return;
+      var isOpen = menu.classList.toggle('show');
+      toggler.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    }
+
+    // ปิดเมนูอัตโนมัติเมื่อคลิกเลือก Section บนมือถือ/แท็บเล็ต
+    function closeNavbar() {
+      var menu = document.getElementById('navbarMenu');
+      var toggler = document.getElementById('navbarToggler');
+      if (menu && menu.classList.contains('show')) {
+        menu.classList.remove('show');
+      }
+      if (toggler) {
+        toggler.setAttribute('aria-expanded', 'false');
+      }
+    }
+
+    // สลับโหมดสีมืด / สว่าง (Dark & Light Mode)
+    function toggleTheme() {
+      var isDark = document.body.classList.toggle('dark-mode');
+      var iconEl = document.getElementById('themeIcon');
+      var labelEl = document.getElementById('themeLabel');
+      if (iconEl) iconEl.textContent = isDark ? '☀️' : '🌙';
+      if (labelEl) labelEl.textContent = isDark ? 'โหมดสว่าง' : 'โหมดมืด';
+      try {
+        localStorage.setItem('win_portfolio_theme', isDark ? 'dark' : 'light');
+      } catch (e) {}
+    }
+
+    // โหลดโหมดสีที่บันทึกไว้
+    (function initTheme() {
+      try {
+        var saved = localStorage.getItem('win_portfolio_theme');
+        if (saved === 'dark') {
+          document.body.classList.add('dark-mode');
+          var iconEl = document.getElementById('themeIcon');
+          var labelEl = document.getElementById('themeLabel');
+          if (iconEl) iconEl.textContent = '☀️';
+          if (labelEl) labelEl.textContent = 'โหมดสว่าง';
+        }
+      } catch (e) {}
+    })();
+
+    // กรองหมวดหมู่ทักษะ (Interactive Skill Filter)
+    function filterSkills(category, btnEl) {
+      var buttons = document.querySelectorAll('.filter-pill-btn');
+      buttons.forEach(function(b) { b.classList.remove('active'); });
+      if (btnEl) btnEl.classList.add('active');
+
+      var cards = document.querySelectorAll('.skill-card-item');
+      cards.forEach(function(card) {
+        var cardCat = card.getAttribute('data-category');
+        if (category === 'all' || cardCat === category) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+
+    // คัดลอกอีเมลสถาบันฯ (พร้อม Fallback สำหรับ Sandbox)
+    function copyDemoEmail() {
+      var emailText = '6840010210.demo@stu.pim.ac.th';
+      var btn = document.getElementById('copyEmailBtn');
+      try {
+        var tempInput = document.createElement('textarea');
+        tempInput.value = emailText;
+        document.body.appendChild(tempInput);
+        tempInput.select();
+        document.execCommand('copy');
+        document.body.removeChild(tempInput);
+      } catch (e) {}
+      if (btn) {
+        btn.textContent = '✅ คัดลอกแล้ว!';
+        setTimeout(function() {
+          btn.textContent = '📋 คัดลอก';
+        }, 2000);
+      }
+    }
+
+    // ไฮไลต์ปุ่มเมนูตามการคลิกหรือเลื่อนหน้าจอ
+    var navLinks = document.querySelectorAll('.nav-link-item');
+    navLinks.forEach(function(link) {
+      link.addEventListener('click', function() {
+        navLinks.forEach(function(item) { item.classList.remove('active'); });
+        this.classList.add('active');
+      });
+    });
+
+    // Scrollspy อัปเดตเมนูอัตโนมัติขณะเลื่อนหน้าเว็บ
+    window.addEventListener('scroll', function() {
+      var sections = ['profile', 'about', 'education', 'skills', 'experience', 'favorites', 'contact'];
+      var scrollPos = window.scrollY + 140;
+      for (var i = sections.length - 1; i >= 0; i--) {
+        var sec = document.getElementById(sections[i]);
+        if (sec && sec.offsetTop <= scrollPos) {
+          navLinks.forEach(function(item) {
+            item.classList.toggle('active', item.getAttribute('href') === '#' + sections[i]);
+          });
+          break;
+        }
+      }
+    });
+
+    // จัดการการส่งฟอร์มติดต่อโดยแสดงข้อความแจ้งเตือนในหน้าเว็บ
+    function handleContactSubmit(event) {
+      event.preventDefault();
+      var nameInput = document.getElementById('senderName');
+      var topicInput = document.getElementById('messageTopic');
+      var statusBox = document.getElementById('formStatusMessage');
+      var sender = nameInput && nameInput.value ? nameInput.value : 'ผู้ติดต่อ';
+      var topic = topicInput && topicInput.value ? topicInput.value : 'ทั่วไป';
+      if (statusBox) {
+        statusBox.style.display = 'block';
+        statusBox.textContent = '✅ ขอบคุณครับคุณ ' + sender + '! ระบบได้รับข้อความเรื่อง "' + topic + '" เรียบร้อยแล้ว';
+      }
+    }
+
+    function resetContactStatus() {
+      var statusBox = document.getElementById('formStatusMessage');
+      if (statusBox) {
+        statusBox.style.display = 'none';
+        statusBox.textContent = '';
+      }
+    }
+
+    // Interactive Constellation Particle Background (oakabc.github.io theme)
+    (function initParticles() {
+      var canvas = document.createElement('canvas');
+      canvas.id = 'particle-canvas';
+      document.body.insertBefore(canvas, document.body.firstChild);
+      var ctx = canvas.getContext('2d');
+      var width = canvas.width = window.innerWidth;
+      var height = canvas.height = window.innerHeight;
+      var particles = [];
+      var count = Math.min(55, Math.floor((width * height) / 22000));
+
+      window.addEventListener('resize', function() {
+        width = canvas.width = window.innerWidth;
+        height = canvas.height = window.innerHeight;
+      });
+
+      for (var i = 0; i < count; i++) {
+        particles.push({
+          x: Math.random() * width,
+          y: Math.random() * height,
+          vx: (Math.random() - 0.5) * 0.45,
+          vy: (Math.random() - 0.5) * 0.45,
+          r: Math.random() * 1.8 + 0.8
+        });
+      }
+
+      function draw() {
+        ctx.clearRect(0, 0, width, height);
+        for (var i = 0; i < particles.length; i++) {
+          var p = particles[i];
+          p.x += p.vx;
+          p.y += p.vy;
+          if (p.x < 0 || p.x > width) p.vx *= -1;
+          if (p.y < 0 || p.y > height) p.vy *= -1;
+
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+          ctx.fillStyle = 'rgba(0, 229, 255, 0.55)';
+          ctx.fill();
+
+          for (var j = i + 1; j < particles.length; j++) {
+            var p2 = particles[j];
+            var dx = p.x - p2.x;
+            var dy = p.y - p2.y;
+            var dist = Math.sqrt(dx * dx + dy * dy);
+            if (dist < 135) {
+              ctx.beginPath();
+              ctx.moveTo(p.x, p.y);
+              ctx.lineTo(p2.x, p2.y);
+              ctx.strokeStyle = 'rgba(0, 229, 255, ' + (0.14 * (1 - dist / 135)) + ')';
+              ctx.lineWidth = 0.8;
+              ctx.stroke();
+            }
+          }
+        }
+        requestAnimationFrame(draw);
+      }
+      draw();
+    })();
+  </script>
+</body>
+</html>
